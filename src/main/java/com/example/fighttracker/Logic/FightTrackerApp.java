@@ -10,9 +10,9 @@ import java.io.IOException;
 public class FightTrackerApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FightTrackerApp.class.getResource("TitleScreen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(FightTrackerApp.class.getResource("/com/example/fighttracker/TitleScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 400, 500);
+        stage.setTitle("Fight Tracker");
         stage.setScene(scene);
         stage.show();
     }
