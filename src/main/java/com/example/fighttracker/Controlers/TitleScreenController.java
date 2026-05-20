@@ -36,8 +36,15 @@ public class TitleScreenController {
         stage.show();
     }
 
-    protected void onSettingsButtonClick() {
+    protected void onSettingsButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/SettingsScreen.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+        Scene scene = new Scene(root, 1024, 576);
+        stage.setScene(scene);
+        stage.show();
     }
 
     protected void onExitButtonClick() {
