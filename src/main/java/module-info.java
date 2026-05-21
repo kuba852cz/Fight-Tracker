@@ -3,6 +3,7 @@ module com.example.fighttracker {
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
+    requires java.sql;
 
     opens com.example.fighttracker to javafx.fxml;
     exports com.example.fighttracker.Controlers;
