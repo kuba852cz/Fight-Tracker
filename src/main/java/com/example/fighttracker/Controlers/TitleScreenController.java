@@ -25,6 +25,7 @@ public class TitleScreenController {
         stage.show();
     }
 
+    @FXML
     protected void onSimulationButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/SimulationScreen.fxml"));
         Parent root = loader.load();
@@ -36,6 +37,7 @@ public class TitleScreenController {
         stage.show();
     }
 
+    @FXML
     protected void onSettingsButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/SettingsScreen.fxml"));
         Parent root = loader.load();
@@ -47,6 +49,7 @@ public class TitleScreenController {
         stage.show();
     }
 
+    @FXML
     protected void onExitButtonClick() {
         Platform.exit();
     }
