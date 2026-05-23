@@ -7,14 +7,14 @@
 
 <VBox fx:id="mainVBox" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.TitleScreenController">
    <children>
-      <Text lineSpacing="1000.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fight Tracker" textAlignment="CENTER" wrappingWidth="269.49609375">
+      <Label prefHeight="100.0" prefWidth="206.0" text="Fight Tracker">
          <font>
-            <Font size="40.0" />
+            <Font size="36.0" />
          </font>
-         <VBox.margin>
-            <Insets bottom="160.0" left="20.0" right="20.0" top="20.0" />
-         </VBox.margin>
-      </Text>
+         <padding>
+            <Insets bottom="150.0" />
+         </padding>
+      </Label>
       <Button mnemonicParsing="false" onAction="#onRankingButtonClick" prefHeight="40.0" prefWidth="300.0" text="Ranking" />
       <Button mnemonicParsing="false" onAction="#onSimulationButtonClick" prefHeight="40.0" prefWidth="300.0" text="Simulate" />
       <Button mnemonicParsing="false" onAction="#onSettingsButtonClick" prefHeight="40.0" prefWidth="300.0" text="Settings" />

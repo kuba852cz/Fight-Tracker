@@ -1,6 +1,7 @@
 package com.example.fighttracker.Controlers;
 
 import com.example.fighttracker.Models.Config;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,11 +38,18 @@ public class SettingsScreenController {
      heightFormat.setValue(Config.heightUnit);
      darkModeSwitch.setSelected(Config.isDarkMode);
 
+        if (Config.isDarkMode) {
+            Platform.runLater(() -> {
+                mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;");
+            });
+        }
+
      darkModeSwitch.selectedProperty().addListener((obs, oldValue, newValue) -> {
          Config.isDarkMode = newValue;
 
          if (newValue){
-             darkModeSwitch.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a; -fx-text-base-color: white;");         } else {
+             darkModeSwitch.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a");
+         } else {
              darkModeSwitch.getScene().getRoot().setStyle("");
          }
 

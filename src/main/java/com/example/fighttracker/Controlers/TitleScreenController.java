@@ -23,7 +23,7 @@ public class TitleScreenController {
 
         if (Config.isDarkMode){
             Platform.runLater(()->{
-                mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a;");
+                mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;");
             });
         }
     }
