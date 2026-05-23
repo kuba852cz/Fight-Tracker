@@ -66,7 +66,7 @@ public class SettingsScreenController {
 
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
 
-        Scene scene = new Scene(root, 1024, 576);
+        Scene scene = new Scene(root, 400, 500);
         stage.setScene(scene);
         stage.show();
     }
