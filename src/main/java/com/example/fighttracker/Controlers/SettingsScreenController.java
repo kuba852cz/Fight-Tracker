@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.ToggleSwitch;
 
@@ -25,12 +26,26 @@ public class SettingsScreenController {
     private ToggleSwitch darkModeSwitch;
 
     @FXML
+    private VBox mainVBox;
+
+    @FXML
     public void initialize(){
      weightFormat.getItems().addAll("kg", "lb");
-     weightFormat.setValue("kg");
-
      heightFormat.getItems().addAll("cm", "ft");
-     heightFormat.setValue("cm");
+
+     weightFormat.setValue(Config.weightUnit);
+     heightFormat.setValue(Config.heightUnit);
+     darkModeSwitch.setSelected(Config.isDarkMode);
+
+     darkModeSwitch.selectedProperty().addListener((obs, oldValue, newValue) -> {
+         Config.isDarkMode = newValue;
+
+         if (newValue){
+             darkModeSwitch.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a; -fx-text-base-color: white;");         } else {
+             darkModeSwitch.getScene().getRoot().setStyle("");
+         }
+
+     });
     }
 
     @FXML
@@ -47,6 +62,5 @@ public class SettingsScreenController {
         stage.setScene(scene);
         stage.show();
     }
-
 
 }

@@ -1,5 +1,6 @@
 package com.example.fighttracker.Controlers;
 
+import com.example.fighttracker.Models.Config;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,11 +8,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class TitleScreenController {
+
+    @FXML
+    private VBox mainVBox;
+
+    @FXML
+    public void initialize(){
+
+        if (Config.isDarkMode){
+            Platform.runLater(()->{
+                mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a;");
+            });
+        }
+    }
 
     @FXML
     protected void onRankingButtonClick(ActionEvent event) throws IOException {
