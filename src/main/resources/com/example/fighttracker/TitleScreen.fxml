@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -12,9 +13,10 @@
             <Font size="36.0" />
          </font>
          <padding>
-            <Insets bottom="150.0" />
+            <Insets bottom="20.0" />
          </padding>
       </Label>
+      <ImageView fx:id="testImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
       <Button mnemonicParsing="false" onAction="#onRankingButtonClick" prefHeight="40.0" prefWidth="300.0" text="Ranking" />
       <Button mnemonicParsing="false" onAction="#onSimulationButtonClick" prefHeight="40.0" prefWidth="300.0" text="Simulate" />
       <Button mnemonicParsing="false" onAction="#onSettingsButtonClick" prefHeight="40.0" prefWidth="300.0" text="Settings" />
