@@ -2,27 +2,27 @@ package com.example.fighttracker.Models;
 
 public class Fighter {
 
-    private String name;
-    private String nickname;
-    private int age;
-    private String country;
-    private String flag;
-    private String weightClass;
+    private final String name;
+    private final String nickname;
+    private final int age;
+    private final String country;
+    private final String flag;
+    private final String weightClass;
     private String rank;
-    private int height;
-    private int weight;
-    private int reach;
-    private String stance;
-    private int wins;
-    private int losses;
-    private int draws;
-    private int ko;
-    private int submissions;
-    private int decisions;
-    private String fightingStyle;
-    private String imagePath;
+    private final double height;
+    private final double weight;
+    private final double reach;
+    private final String stance;
+    private final int wins;
+    private final int losses;
+    private final int draws;
+    private final int ko;
+    private final int submissions;
+    private final int decisions;
+    private final String fightingStyle;
+    private final String imagePath;
 
-    public Fighter(String name, String nickname, int age, String country, String flag, String weightClass, String rank, int height, int weight, int reach, String stance, int wins, int losses, int draws, int ko, int submissions, int decisions, String fightingStyle, String imagePath) {
+    public Fighter(String name, String nickname, int age, String country, String flag, String weightClass, String rank, double height, double weight, double reach, String stance, int wins, int losses, int draws, int ko, int submissions, int decisions, String fightingStyle, String imagePath) {
         this.name = name;
         this.nickname = nickname;
         this.age = age;
@@ -72,15 +72,15 @@ public class Fighter {
         return rank;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public int getReach() {
+    public double getReach() {
         return reach;
     }
 

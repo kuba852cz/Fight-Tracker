@@ -11,9 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.ToggleSwitch;
-
 import java.io.IOException;
-import java.sql.SQLXML;
 
 public class SettingsScreenController {
 
@@ -39,9 +37,7 @@ public class SettingsScreenController {
      darkModeSwitch.setSelected(Config.isDarkMode);
 
         if (Config.isDarkMode) {
-            Platform.runLater(() -> {
-                mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;");
-            });
+            Platform.runLater(() -> mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
         }
 
      darkModeSwitch.selectedProperty().addListener((obs, oldValue, newValue) -> {
