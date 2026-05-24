@@ -7,12 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class TitleScreenController {
 
@@ -20,24 +22,20 @@ public class TitleScreenController {
     private VBox mainVBox;
 
     @FXML
-    private ImageView testImageView;
+    private ImageView logoImageView;
 
     @FXML
     public void initialize(){
 
         if (Config.isDarkMode){
-            Platform.runLater(()-> mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
+            Platform.runLater(()->{
+                mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;");
+            });
         }
 
-        try {
-            java.net.URLConnection pripojeni = new java.net.URL("https://a.espncdn.com/combiner/i?img=/i/headshots/mma/players/full/4320770.png").openConnection();
-            pripojeni.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
-
-            testImageView.setImage(new Image(pripojeni.getInputStream()));
-        } catch (Exception e) {
-            System.out.println("Nepodařilo se stáhnout fotku: " + e.getMessage());
-        }
-
+        String imagePath = Objects.requireNonNull(getClass().getResource("/FightTracker_Logo.png")).toExternalForm();
+        logoImageView.setImage(new Image(imagePath));
+        logoImageView.fitWidthProperty().bind(mainVBox.widthProperty());
     }
 
     @FXML

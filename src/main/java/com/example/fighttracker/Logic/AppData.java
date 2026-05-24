@@ -18,10 +18,10 @@ public class AppData {
         try {
             Gson gson = new Gson();
 
-            java.io.InputStream inputStream = getClass().getResourceAsStream("/com/example/fighttracker/fighters.json");
+            java.io.InputStream inputStream = getClass().getResourceAsStream("/Fighters.json");
 
             if (inputStream == null) {
-                System.out.println("CHYBA: Soubor fighters.json nebyl nalezen!");
+                System.out.println("CHYBA: Soubor Fighters.json nebyl nalezen!");
                 return;
             }
 

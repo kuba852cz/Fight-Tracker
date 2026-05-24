@@ -4,23 +4,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<VBox fx:id="mainVBox" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.TitleScreenController">
+<VBox fx:id="mainVBox" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.TitleScreenController">
    <children>
-      <Label prefHeight="100.0" prefWidth="206.0" text="Fight Tracker">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <padding>
+      <ImageView fx:id="logoImageView" pickOnBounds="true" preserveRatio="true">
+         <VBox.margin>
             <Insets bottom="20.0" />
-         </padding>
-      </Label>
-      <ImageView fx:id="testImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <Button mnemonicParsing="false" onAction="#onRankingButtonClick" prefHeight="40.0" prefWidth="300.0" text="Ranking" />
-      <Button mnemonicParsing="false" onAction="#onSimulationButtonClick" prefHeight="40.0" prefWidth="300.0" text="Simulate" />
-      <Button mnemonicParsing="false" onAction="#onSettingsButtonClick" prefHeight="40.0" prefWidth="300.0" text="Settings" />
-      <Button mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: RED;" text="Exit" textFill="WHITE">
+         </VBox.margin></ImageView>
+      <Button mnemonicParsing="false" onAction="#onRankingButtonClick" minHeight="40.0" prefWidth="300.0" text="Ranking" />
+      <Button mnemonicParsing="false" onAction="#onSimulationButtonClick" minHeight="40.0" prefWidth="300.0" text="Simulate" />
+      <Button mnemonicParsing="false" onAction="#onSettingsButtonClick" minHeight="40.0" prefWidth="300.0" text="Settings" />
+      <Button mnemonicParsing="false" onAction="#onExitButtonClick" minHeight="40.0" prefWidth="300.0" style="-fx-background-color: RED;" text="Exit" textFill="WHITE">
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin>

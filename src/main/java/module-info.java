@@ -5,6 +5,7 @@ module com.example.fighttracker {
     requires org.controlsfx.controls;
     requires java.sql;
     requires com.google.gson;
+    opens com.example.fighttracker.Models to com.google.gson;
 
     opens com.example.fighttracker to javafx.fxml;
     exports com.example.fighttracker.Controlers;

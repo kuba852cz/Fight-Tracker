@@ -8,7 +8,7 @@ public class Fighter {
     private final String country;
     private final String flag;
     private final String weightClass;
-    private String rank;
+    private final int rank;
     private final double height;
     private final double weight;
     private final double reach;
@@ -22,14 +22,18 @@ public class Fighter {
     private final String fightingStyle;
     private final String imagePath;
 
-    public Fighter(String name, String nickname, int age, String country, String flag, String weightClass, String rank, double height, double weight, double reach, String stance, int wins, int losses, int draws, int ko, int submissions, int decisions, String fightingStyle, String imagePath) {
+    public String getRecord (){
+        return wins+"/"+losses+"/"+draws;
+    }
+
+    public Fighter(String name, String nickname, int age, String country, String flag, String weightClass, int rank, double height, double weight, double reach, String stance, int wins, int losses, int draws, int ko, int submissions, int decisions, String fightingStyle, String imagePath) {
         this.name = name;
         this.nickname = nickname;
         this.age = age;
         this.country = country;
         this.flag = flag;
         this.weightClass = weightClass;
-        setRank(rank);
+        this.rank = rank;
         this.height = height;
         this.weight = weight;
         this.reach = reach;
@@ -69,7 +73,11 @@ public class Fighter {
     }
 
     public String getRank() {
-        return rank;
+        if (this.rank == 0){
+            return "C";
+        }else{
+            return String.valueOf(this.rank);
+        }
     }
 
     public double getHeight() {
@@ -120,11 +128,28 @@ public class Fighter {
         return imagePath;
     }
 
-    public void setRank(String rank) {
-        if (rank.equals("0")){
-            this.rank = "C";
-        }else {
-            this.rank = rank;
-        }
+    @Override
+    public String toString() {
+        return "Fighter{" +
+                "name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                ", flag='" + flag + '\'' +
+                ", weightClass='" + weightClass + '\'' +
+                ", rank='" + rank + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", reach=" + reach +
+                ", stance='" + stance + '\'' +
+                ", wins=" + wins +
+                ", losses=" + losses +
+                ", draws=" + draws +
+                ", ko=" + ko +
+                ", submissions=" + submissions +
+                ", decisions=" + decisions +
+                ", fightingStyle='" + fightingStyle + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                '}';
     }
 }
