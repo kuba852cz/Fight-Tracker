@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import org.controlsfx.control.*?>
 
-<VBox fx:id="mainVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.SettingsScreenController">
+<VBox fx:id="mainVBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.SettingsScreenController">
    <children>
       <Label alignment="BASELINE_LEFT" text="Settings" textAlignment="CENTER">
          <font>
@@ -17,7 +17,7 @@
             <Insets />
          </VBox.margin>
       </Label>
-      <Label prefHeight="18.0" prefWidth="302.0" text="System">
+      <Label prefHeight="26.0" prefWidth="549.0" text="System">
          <font>
             <Font size="16.0" />
          </font>
@@ -25,19 +25,19 @@
             <Insets left="20.0" />
          </VBox.margin>
       </Label>
-      <Line endX="100.0" startX="-200.0" stroke="#515151" strokeLineCap="ROUND">
+      <Line endX="100.0" startX="-280.0" stroke="#515151" strokeLineCap="ROUND">
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin>
       </Line>
-      <ToggleSwitch fx:id="darkModeSwitch" prefHeight="18.0" prefWidth="300.0" text="Dark Mode">
+      <ToggleSwitch fx:id="darkModeSwitch" prefHeight="31.0" prefWidth="360.0" text="Dark Mode">
          <VBox.margin>
             <Insets left="20.0" />
          </VBox.margin>
          <padding>
             <Insets bottom="40.0" />
          </padding></ToggleSwitch>
-      <Label prefHeight="26.0" prefWidth="305.0" text="App ">
+      <Label prefHeight="26.0" prefWidth="408.0" text="App ">
          <font>
             <Font size="16.0" />
          </font>
@@ -45,14 +45,14 @@
             <Insets left="20.0" />
          </VBox.margin>
       </Label>
-      <Line endX="100.0" layoutX="201.0" layoutY="91.0" startX="-200.0" stroke="#515151" strokeLineCap="ROUND">
+      <Line endX="100.0" layoutX="201.0" layoutY="91.0" startX="-280.0" stroke="#515151" strokeLineCap="ROUND">
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin>
       </Line>
       <HBox alignment="TOP_RIGHT" prefHeight="34.0" prefWidth="269.0">
          <children>
-            <Label prefHeight="26.0" prefWidth="200.0" text="Weight format" />
+            <Label prefHeight="26.0" prefWidth="260.0" text="Weight format" />
             <ChoiceBox fx:id="weightFormat" prefHeight="20.0" prefWidth="100.0" />
          </children>
          <VBox.margin>
@@ -61,7 +61,7 @@
       </HBox>
       <HBox prefHeight="18.0" prefWidth="262.0">
          <children>
-            <Label prefHeight="26.0" prefWidth="200.0" text="Height format" />
+            <Label prefHeight="26.0" prefWidth="260.0" text="Height format" />
             <ChoiceBox fx:id="heightFormat" prefHeight="20.0" prefWidth="100.0">
                <opaqueInsets>
                   <Insets />
@@ -75,7 +75,10 @@
             <Insets bottom="40.0" left="20.0" />
          </VBox.margin>
       </HBox>
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="26.0" prefWidth="65.0" text="Back" />
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="26.0" prefWidth="116.0" text="Back">
+         <VBox.margin>
+            <Insets top="100.0" />
+         </VBox.margin></Button>
    </children>
    <opaqueInsets>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
