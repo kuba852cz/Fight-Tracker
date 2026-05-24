@@ -8,7 +8,7 @@ public class Fighter {
     private String country;
     private String flag;
     private String weightClass;
-    private int rank;
+    private String rank;
     private int height;
     private int weight;
     private int reach;
@@ -22,14 +22,14 @@ public class Fighter {
     private String fightingStyle;
     private String imagePath;
 
-    public Fighter(String name, String nickname, int age, String country, String flag, String weightClass, int rank, int height, int weight, int reach, String stance, int wins, int losses, int draws, int ko, int submissions, int decisions, String fightingStyle, String imagePath) {
+    public Fighter(String name, String nickname, int age, String country, String flag, String weightClass, String rank, int height, int weight, int reach, String stance, int wins, int losses, int draws, int ko, int submissions, int decisions, String fightingStyle, String imagePath) {
         this.name = name;
         this.nickname = nickname;
         this.age = age;
         this.country = country;
         this.flag = flag;
         this.weightClass = weightClass;
-        this.rank = rank;
+        setRank(rank);
         this.height = height;
         this.weight = weight;
         this.reach = reach;
@@ -68,7 +68,7 @@ public class Fighter {
         return weightClass;
     }
 
-    public int getRank() {
+    public String getRank() {
         return rank;
     }
 
@@ -118,5 +118,13 @@ public class Fighter {
 
     public String getImagePath() {
         return imagePath;
+    }
+
+    public void setRank(String rank) {
+        if (rank.equals("0")){
+            this.rank = "C";
+        }else {
+            this.rank = rank;
+        }
     }
 }
