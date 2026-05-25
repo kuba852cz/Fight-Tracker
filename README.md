@@ -12,7 +12,7 @@ Application, where you can checkouts fighter stats or even a bio. You can also C
 ## 🎮 Controls (Commands)
 You controll this App by basic buttons and your mouse.
 
-## ⚙️ Game Mechanics
+## ⚙️ App Mechanics
 Fighters bio
 Leaderboard
 Simulation of a fights 
