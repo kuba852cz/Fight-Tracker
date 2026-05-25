@@ -19,6 +19,11 @@
          <font>
             <Font size="24.0" />
          </font></Button>
-      <ListView fx:id="listOfFighters" layoutX="1.0" layoutY="62.0" prefHeight="350.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0" />
+      <ListView fx:id="listOfFighters" layoutX="1.0" layoutY="50.0" prefHeight="312.0" prefWidth="599.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+      <HBox alignment="CENTER" layoutX="255.0" layoutY="368.6000061035156" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button fx:id="backButton"  maxHeight="26.0" maxWidth="90.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="26.0" prefWidth="90.0" text="Back" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

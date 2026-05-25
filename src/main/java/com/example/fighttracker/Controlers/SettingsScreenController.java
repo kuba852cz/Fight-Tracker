@@ -62,8 +62,9 @@ public class SettingsScreenController {
 
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
 
-        Scene scene = new Scene(root, 400, 500);
-        stage.setScene(scene);
+        stage.setTitle("Fight Tracker");
+        stage.setScene(new Scene(root));
+        stage.sizeToScene();
         stage.show();
     }
 

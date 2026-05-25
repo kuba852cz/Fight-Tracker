@@ -6,6 +6,7 @@ import com.example.fighttracker.Models.Fighter;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -131,6 +132,20 @@ public class RankingScreenController {
         }
 
         listOfFighters.setItems(fightersData);
+    }
+
+    @FXML
+    public void onBackButtonClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/TitleScreen.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+        stage.setMaximized(false);
+        stage.setTitle("Fight Tracker");
+        stage.setScene(new Scene(root));
+        stage.sizeToScene();
+        stage.show();
     }
 
 }
