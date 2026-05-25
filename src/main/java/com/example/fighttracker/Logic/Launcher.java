@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Launcher {
     public static void main(String[] args) {
-        //Application.launch(FightTrackerApp.class, args);
+        Application.launch(FightTrackerApp.class, args);
 
         AppData appData = new AppData();
 
@@ -15,9 +15,9 @@ public class Launcher {
         appData.loadFighters();
 
         // 3. Vytáhneme si testovací divizi (musí přesně sedět s klíčem v JSONu)
-        List<Fighter> flyweights = appData.getDivision("Lightweight");
+        List<Fighter> flyweights = appData.getDivision("Flyweight");
 
-        // 4. Ověříme, že v seznamu něco je, a vypíšeme šampiona
+        //4. Ověříme, že v seznamu něco je, a vypíšeme šampiona
         if (flyweights != null && !flyweights.isEmpty()) {
             Fighter champ = flyweights.get(0);
             System.out.println("👑 Šampion Flyweight: " + champ.getName());
