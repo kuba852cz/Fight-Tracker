@@ -8,9 +8,9 @@
 <HBox fx:id="mainHBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.FighterCellController">
    <children>
       <Label fx:id="labelRank" prefHeight="50.0" prefWidth="50.0" text="Label" />
-      <ImageView fx:id="labelFlag" fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageFlag" fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
          <HBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
          </HBox.margin>
       </ImageView>
       <Label fx:id="labelName" prefHeight="50.0" prefWidth="400.0" text="Label" />

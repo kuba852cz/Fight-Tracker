@@ -6,19 +6,19 @@
 
 <AnchorPane fx:id="mainAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.RankingScreenController">
    <children>
-      <Label fx:id="labelWeightClass" alignment="CENTER" layoutX="64.0" prefHeight="51.0" prefWidth="486.0" text="Label">
+      <Label fx:id="labelWeightClass" alignment="CENTER" layoutX="64.0" prefHeight="51.0" prefWidth="473.0" text="Label" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="leftButton" onAction="#onLeftButtonClick" mnemonicParsing="false" prefHeight="50.0" prefWidth="64.0" text="&lt;-" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button fx:id="leftButton" mnemonicParsing="false" onAction="#onLeftButtonClick" prefHeight="50.0" prefWidth="64.0" text="&lt;-" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Button fx:id="rightButton" onAction="#onRightButtonClick" layoutX="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="64.0" text="-&gt;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button fx:id="rightButton" layoutX="547.0" mnemonicParsing="false" onAction="#onRightButtonClick" prefHeight="50.0" prefWidth="64.0" text="-&gt;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <ListView fx:id="listOfFighters" layoutX="1.0" layoutY="62.0" prefHeight="350.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" />
+      <ListView fx:id="listOfFighters" layoutX="1.0" layoutY="62.0" prefHeight="350.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0" />
    </children>
 </AnchorPane>

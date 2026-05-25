@@ -47,6 +47,7 @@ public class TitleScreenController {
 
         Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
@@ -59,6 +60,7 @@ public class TitleScreenController {
 
         Scene scene = new Scene(root, 1024, 576);
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
