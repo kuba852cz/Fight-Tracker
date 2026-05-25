@@ -152,4 +152,8 @@ public class Fighter {
                 ", imagePath='" + imagePath + '\'' +
                 '}';
     }
+
+    public String rankingToString(){
+        return rank + " " + flag + " " + name + "                  " + getRecord();
+    }
 }

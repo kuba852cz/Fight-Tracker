@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="mainAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.RankingScreenController">
-
+   <children>
+      <Button fx:id="leftButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="64.0" text="&lt;-">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="rightButton" layoutX="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="64.0" text="-&gt;">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <ListView fx:id="listOfFighters" layoutY="50.0" prefHeight="350.0" prefWidth="611.0" />
+   </children>
 </AnchorPane>
