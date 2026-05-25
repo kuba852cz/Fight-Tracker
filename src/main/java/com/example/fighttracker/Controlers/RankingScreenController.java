@@ -6,16 +6,17 @@ import com.example.fighttracker.Models.Fighter;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class RankingScreenController {
@@ -33,24 +34,42 @@ public class RankingScreenController {
     private Label labelWeightClass;
 
     @FXML
-    private Button leftButton;
-
-    @FXML
-    private Button rightButton;
-
-    @FXML
     public void initialize(){
 
         updateWeightClassLabel();
         setupListView();
 
         if (Config.isDarkMode){
-            Platform.runLater(()->{
-                mainAnchorPane.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;");
-            });
+            Platform.runLater(()-> mainAnchorPane.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
+            listOfFighters.setStyle("-fx-control-inner-background: #1a1a1a; -fx-background-color: #1a1a1a; -fx-padding: -1;");
         }
 
         loadDataForCurrentWeight();
+
+        listOfFighters.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Fighter selected = listOfFighters.getSelectionModel().getSelectedItem();
+
+                if (selected != null) {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/BioScreen.fxml"));
+                        Parent root = loader.load();
+
+                        BioScreenCotroller bioScreenCotroller = loader.getController();
+                        bioScreenCotroller.setFighterData(selected);
+
+                        Scene currentScene = ((javafx.scene.Node) event.getSource()).getScene();
+
+                        currentScene.setRoot(root);
+
+                        Stage stage = (Stage) currentScene.getWindow();
+                        stage.setTitle("Fight Tracker - " + selected.getName() + " BIO");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
     }
 
     @FXML
@@ -76,7 +95,7 @@ public class RankingScreenController {
     }
 
     private void setupListView() {
-        listOfFighters.setCellFactory(listView -> new ListCell<Fighter>() {
+        listOfFighters.setCellFactory(listView -> new ListCell<>() {
             @Override
             protected void updateItem(Fighter fighter, boolean empty) {
                 super.updateItem(fighter, empty);

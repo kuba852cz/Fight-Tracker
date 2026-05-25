@@ -45,9 +45,10 @@ public class TitleScreenController {
 
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
 
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 1024, 576);
         stage.setScene(scene);
         stage.setMaximized(true);
+        stage.setTitle("Fight Tracker - Ranking");
         stage.show();
     }
 
@@ -61,6 +62,7 @@ public class TitleScreenController {
         Scene scene = new Scene(root, 1024, 576);
         stage.setScene(scene);
         stage.setMaximized(true);
+        stage.setTitle("Fight Tracker - Simulation");
         stage.show();
     }
 
@@ -73,6 +75,7 @@ public class TitleScreenController {
 
         Scene scene = new Scene(root, 400, 500);
         stage.setScene(scene);
+        stage.setTitle("Fight Tracker - Settings");
         stage.show();
     }
 

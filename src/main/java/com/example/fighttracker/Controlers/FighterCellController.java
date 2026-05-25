@@ -28,9 +28,11 @@ public class FighterCellController {
     @FXML
     public void initialize() {
         if (Config.isDarkMode) {
-            Platform.runLater(() -> {
-                mainHBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;");
-            });
+            mainHBox.setStyle("-fx-background-color: #2b2b2b;");
+
+            labelName.setStyle("-fx-text-fill: white;");
+            labelRecord.setStyle("-fx-text-fill: white;");
+            labelRank.setStyle("-fx-text-fill: white;");
         }
     }
 
