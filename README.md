@@ -10,13 +10,12 @@ https://github.com/kuba852cz
 Application, where you can checkouts fighter stats or even a bio. You can also Check the leaderboard and see the champion of the division. Even you can set up a tournament and simulate each fight and get a brand new champion.
 
 ## 🎮 Controls (Commands)
-
+You controll this App by basic buttons and your mouse.
 
 ## ⚙️ Game Mechanics
 Fighters bio
 Leaderboard
 Simulation of a fights 
-Tournament
 
 ## ⬇️ Installation
 1. Make sure you have **Java** installed on your computer (Java 17 or newer is recommended).
