@@ -56,14 +56,15 @@ public class BioScreenCotroller {
             Platform.runLater(()-> mainAnchorPane.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
         }
 
-        // Vynutíme, aby se ImageView zvětšoval/zmenšoval podle prostoru
         imagePhoto.setPreserveRatio(true);
         imagePhoto.setSmooth(true);
         imagePhoto.setCache(true);
 
-// Automatická responzivita navázaná na šířku okna
-// 30 % šířky okna je zhruba ideální pro fotku fightera
         imagePhoto.fitWidthProperty().bind(mainAnchorPane.widthProperty().multiply(0.25));
+
+        progressBarWins.setStyle("-fx-accent: green;");
+        progressBarLosses.setStyle("-fx-accent: #b50000;");
+        progressBarDraws.setStyle("-fx-accent: #e8a500");
 
     }
 
