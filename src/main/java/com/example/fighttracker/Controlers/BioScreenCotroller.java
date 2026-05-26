@@ -13,6 +13,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,7 +21,8 @@ import java.io.IOException;
 public class BioScreenCotroller {
 
     @FXML
-    private BorderPane mainBorderPane;
+    private AnchorPane mainAnchorPane;
+
     @FXML private Label labelName;
     @FXML private Label labelNickname;
     @FXML private Label labelCountry;
@@ -51,14 +53,23 @@ public class BioScreenCotroller {
     public void initialize(){
 
         if (Config.isDarkMode){
-            Platform.runLater(()-> mainBorderPane.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
+            Platform.runLater(()-> mainAnchorPane.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
         }
+
+        // Vynutíme, aby se ImageView zvětšoval/zmenšoval podle prostoru
+        imagePhoto.setPreserveRatio(true);
+        imagePhoto.setSmooth(true);
+        imagePhoto.setCache(true);
+
+// Automatická responzivita navázaná na šířku okna
+// 30 % šířky okna je zhruba ideální pro fotku fightera
+        imagePhoto.fitWidthProperty().bind(mainAnchorPane.widthProperty().multiply(0.25));
 
     }
 
     public void setFighterData(Fighter fighter){
         labelName.setText(fighter.getName());
-        labelNickname.setText(fighter.getNickname());
+        labelNickname.setText("\"" + fighter.getNickname() + "\"");
         labelCountry.setText(fighter.getCountry());
         labelAge.setText(String.valueOf(fighter.getAge()));
         labelWeightClass.setText(fighter.getWeightClass());
@@ -73,19 +84,20 @@ public class BioScreenCotroller {
         labelDec.setText(String.valueOf(fighter.getDecisions()));
 
         if (Config.weightUnit.equals("lb")){
-            double weight = fighter.getWeight()*2.20462262;
-            labelWeight.setText(String.valueOf(weight) + " lb");
-        }else{
-            labelWeight.setText(String.valueOf(fighter.getWeight()) + " kg");
+            double weight = fighter.getWeight() * 2.20462262;
+            labelWeight.setText(String.format(java.util.Locale.US, "%.1f lb", weight));
+        } else {
+            labelWeight.setText(fighter.getWeight() + " kg");
         }
+
         if (Config.heightUnit.equals("ft")){
-            double height = fighter.getHeight()*0.032808399;
-            double reach = fighter.getReach()*0.032808399;
-            labelHeight.setText(String.valueOf(height));
-            labelReach.setText(String.valueOf(reach));
-        }else{
-            labelHeight.setText(String.valueOf(fighter.getHeight()));
-            labelReach.setText(String.valueOf(fighter.getReach()));
+            double height = fighter.getHeight() * 0.032808399;
+            double reach = fighter.getReach() * 0.032808399;
+            labelHeight.setText(String.format(java.util.Locale.US, "%.1f ft", height));
+            labelReach.setText(String.format(java.util.Locale.US, "%.1f ft", reach));
+        } else {
+            labelHeight.setText(fighter.getHeight() + " cm");
+            labelReach.setText(fighter.getReach() + " cm");
         }
 
         try {
@@ -111,11 +123,11 @@ public class BioScreenCotroller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/RankingScreen.fxml"));
         Parent root = loader.load();
 
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene currentScene = ((javafx.scene.Node) event.getSource()).getScene();
 
+        currentScene.setRoot(root);
+
+        Stage stage = (Stage) currentScene.getWindow();
         stage.setTitle("Fight Tracker - Rankings");
-        stage.setScene(new Scene(root));
-        stage.setMaximized(true);
-        stage.show();
     }
 }
