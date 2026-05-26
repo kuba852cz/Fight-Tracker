@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fighttracker.Controlers.BioScreenCotroller">
    <bottom>
       <HBox alignment="CENTER" prefHeight="28.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -106,7 +106,7 @@
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label text="Weight" />
-                              <Label fx:id="imageWeight" text="Label" />
+                              <Label fx:id="labelWeight" text="Label" />
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
@@ -195,7 +195,7 @@
                                     <VBox prefHeight="200.0" prefWidth="100.0">
                                        <children>
                                           <Label text="KO" />
-                                          <Label fx:id="labeklKo" text="Label" />
+                                          <Label fx:id="labelKo" text="Label" />
                                        </children>
                                     </VBox>
                                     <VBox prefHeight="200.0" prefWidth="100.0">
