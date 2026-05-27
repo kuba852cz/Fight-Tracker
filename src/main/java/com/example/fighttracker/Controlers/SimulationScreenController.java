@@ -1,6 +1,7 @@
 package com.example.fighttracker.Controlers;
 
 import com.example.fighttracker.Models.Config;
+import com.example.fighttracker.Models.Fighter;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class SimulationScreenController {
 
@@ -41,5 +43,44 @@ public class SimulationScreenController {
         stage.show();
     }
 
+    public void fightSimulation(Fighter fighterA, Fighter fighterB){
+        int totalFightsA = (fighterA.getWins() + fighterA.getLosses() + fighterA.getDraws());
+        int totalFightsB = (fighterB.getWins() + fighterB.getLosses() + fighterB.getDraws());
+
+        double winRatioA;
+        double winRatioB;
+
+        if (totalFightsA == 0){
+            winRatioA = 0.5;
+        } else {
+            winRatioA = (double) (fighterA.getWins()) / totalFightsA;
+        }
+
+        if (totalFightsB == 0){
+            winRatioB = 0.5;
+        } else {
+            winRatioB = (double) (fighterB.getWins()) / totalFightsB;
+        }
+
+        double totalWinRatio = winRatioA+winRatioB;
+        double drawMargin = totalWinRatio*0.025;
+
+        Random random = new Random();
+
+        double winRandom = random.nextDouble(0,(winRatioA+winRatioB));
+
+
+        if (winRandom > (winRatioA + drawMargin)){
+            //B vyhra
+        } else if (winRandom < (winRatioA - drawMargin)) {
+            // A vyhra
+        } else  {
+            //remiza
+        }
+
+
+
+
+    }
 
 }
