@@ -1,19 +1,25 @@
 package com.example.fighttracker.Controlers;
 
+import com.example.fighttracker.Logic.AppData;
 import com.example.fighttracker.Models.Config;
 import com.example.fighttracker.Models.Fighter;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Random;
+import java.util.List;
 
 public class SimulationScreenController {
 
@@ -21,13 +27,49 @@ public class SimulationScreenController {
     private AnchorPane mainAnchorPane;
 
     @FXML
-    public void initialize(){
-        if (Config.isDarkMode){
-            Platform.runLater(()-> mainAnchorPane.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
+    private ListView<Fighter> listOfFightersLeft;
+
+    @FXML
+    private ListView<Fighter> listOfFightersRight;
+
+    @FXML
+    private Label labelWeightClass;
+
+
+    @FXML
+    public void onLeftButtonClick() {
+        if (currentWeightIndex > 0) {
+            currentWeightIndex--;
+            updateWeightClassLabel();
+            loadDataForCurrentWeight();
+        }
+    }
+
+    @FXML
+    public void onRightButtonClick() {
+        if (currentWeightIndex < weightClasses.length - 1) {
+            currentWeightIndex++;
+            updateWeightClassLabel();
+            loadDataForCurrentWeight();
+        }
+    }
+
+    private final String[] weightClasses = {"Flyweight", "Bantamweight", "Featherweight", "Lightweight", "Welterweight", "Middleweight", "Light heavyweight", "Heavyweight"};
+    private int currentWeightIndex = 3;
+
+    @FXML
+    public void initialize() {
+
+        updateWeightClassLabel();
+        setupListView();
+
+        if (Config.isDarkMode) {
+            Platform.runLater(() -> mainAnchorPane.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
+            listOfFightersLeft.setStyle("-fx-control-inner-background: #1a1a1a; -fx-background-color: #1a1a1a; -fx-padding: -1;");
+            listOfFightersRight.setStyle("-fx-control-inner-background: #1a1a1a; -fx-background-color: #1a1a1a; -fx-padding: -1;");
         }
 
-
-
+        loadDataForCurrentWeight();
     }
 
     @FXML
@@ -44,86 +86,71 @@ public class SimulationScreenController {
         stage.show();
     }
 
-    public String typeOfFinish(Fighter fighterA, Fighter fighterB){
-        double koRatioA = (double) fighterA.getKo() /fighterA.getWins();
-        double koSubmissionA = (double) fighterA.getSubmissions() /fighterA.getWins();
-        double koDeccisionA = (double) fighterA.getDecisions() /fighterA.getWins();
-        double koRatioB = (double) fighterB.getKo() /fighterB.getWins();
-        double koSubmissionB = (double) fighterB.getSubmissions() /fighterB.getWins();
-        double koDeccisionB = (double) fighterB.getDecisions() /fighterB.getWins();
-
-        String finisType = "";
-        int deccisionRandom = new Random().nextInt(0,2);
-
-        int round = finishedAtRound(fighterA, fighterB);
-
-        if (round == 5 && deccisionRandom == 1){
-            finisType = "Deccision";
-        } else if (round == 3 && !fighterA.getRank().equals("C") || !fighterB.getRank().equals("C") && deccisionRandom ==1) {
-            finisType = "Deccision";
-        }else {
-
-
-
-
-
-        }
-
-
-
-        return finisType;
+    private void updateWeightClassLabel() {
+        labelWeightClass.setText(weightClasses[currentWeightIndex]);
     }
 
-    public int finishedAtRound(Fighter fighterA, Fighter fighterB){
+    private void setupListView() {
+        listOfFightersLeft.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Fighter fighter, boolean empty) {
+                super.updateItem(fighter, empty);
+                if (empty || fighter == null) {
+                    setGraphic(null);
+                } else {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/FighterCell.fxml"));
+                        Parent root = loader.load();
 
-        int maxRound;
-        if (fighterA.getRank().equals("C") || fighterB.getRank().equals("C")){
-            maxRound = 5;
-        } else {
-            maxRound = 3;
-        }
+                        FighterCellController cellController = loader.getController();
+                        cellController.setFighter(fighter);
 
-        return new Random().nextInt(1,maxRound+1);
+                        setGraphic(root);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        listOfFightersRight.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Fighter fighter, boolean empty) {
+                super.updateItem(fighter, empty);
+                if (empty || fighter == null) {
+                    setGraphic(null);
+                } else {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/FighterCell.fxml"));
+                        Parent root = loader.load();
+
+                        FighterCellController cellController = loader.getController();
+                        cellController.setFighter(fighter);
+
+                        setGraphic(root);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
     }
 
-    public String fightSimulation(Fighter fighterA, Fighter fighterB){
+    private void loadDataForCurrentWeight() {
+        String currentCategory = weightClasses[currentWeightIndex];
+        ObservableList<Fighter> fightersData = FXCollections.observableArrayList();
 
-        String nameOfWinner = "";
-        int totalFightsA = (fighterA.getWins() + fighterA.getLosses() + fighterA.getDraws());
-        int totalFightsB = (fighterB.getWins() + fighterB.getLosses() + fighterB.getDraws());
+        AppData appData = new AppData();
+        appData.loadFighters();
+        List<Fighter> fighters = appData.getDivision(currentCategory);
 
-        double winRatioA;
-        double winRatioB;
-
-        if (totalFightsA == 0){
-            winRatioA = 0.5;
-        } else {
-            winRatioA = (double) (fighterA.getWins()) / totalFightsA;
+        if (fighters != null) {
+            fightersData.addAll(fighters);
         }
 
-        if (totalFightsB == 0){
-            winRatioB = 0.5;
-        } else {
-            winRatioB = (double) (fighterB.getWins()) / totalFightsB;
-        }
-
-        double totalWinRatio = winRatioA+winRatioB;
-        double drawMargin = totalWinRatio*0.025;
-
-        Random random = new Random();
-
-        double winRandom = random.nextDouble(0,(winRatioA+winRatioB));
-
-
-        if (winRandom > (winRatioA + drawMargin)){
-            nameOfWinner = fighterB.getName();
-        } else if (winRandom < (winRatioA - drawMargin)) {
-            nameOfWinner = fighterA.getName();
-        } else  {
-            nameOfWinner = "Draw";
-        }
-
-        return nameOfWinner;
+        listOfFightersLeft.setItems(fightersData);
+        listOfFightersRight.setItems(fightersData);
     }
 
 }
