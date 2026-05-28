@@ -41,12 +41,12 @@
                   <ListView fx:id="listOfFightersLeft" prefHeight="503.0" prefWidth="210.0" HBox.hgrow="ALWAYS" />
                   <VBox alignment="CENTER" prefHeight="472.0" prefWidth="121.0">
                      <children>
-                        <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label text="Label">
+                        <ImageView fx:id="imageFighterLeft" fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="labelNameLeft" text="Name">
                            <font>
                               <Font size="16.0" />
                            </font></Label>
-                        <Label text="Label">
+                        <Label fx:id="labelNicknameLeft" text="Nickname">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -76,13 +76,13 @@
                   </VBox>
                   <VBox alignment="CENTER" layoutX="251.0" layoutY="10.0" prefHeight="472.0" prefWidth="121.0">
                      <children>
-                        <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label text="Label">
+                        <ImageView fx:id="imageFighterRight" fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="labelNameRight" text="Name">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label text="Label">
+                        <Label fx:id="labelNicknameRight" text="Nickname">
                            <font>
                               <Font size="16.0" />
                            </font>

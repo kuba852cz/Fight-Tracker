@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -35,6 +36,24 @@ public class SimulationScreenController {
     @FXML
     private Label labelWeightClass;
 
+    @FXML
+    private Label labelNameLeft;
+
+    @FXML
+    private Label labelNicknameLeft;
+
+    @FXML
+    private Label labelNameRight;
+
+    @FXML
+    private Label labelNicknameRight;
+
+    @FXML
+    private ImageView imageFighterLeft;
+
+    @FXML
+    private ImageView imageFighterRight;
+
 
     @FXML
     public void onLeftButtonClick() {
@@ -42,6 +61,8 @@ public class SimulationScreenController {
             currentWeightIndex--;
             updateWeightClassLabel();
             loadDataForCurrentWeight();
+
+            clearMiddleRing();
         }
     }
 
@@ -51,6 +72,8 @@ public class SimulationScreenController {
             currentWeightIndex++;
             updateWeightClassLabel();
             loadDataForCurrentWeight();
+
+            clearMiddleRing();
         }
     }
 
@@ -70,6 +93,7 @@ public class SimulationScreenController {
         }
 
         loadDataForCurrentWeight();
+        fighterSelectedAction();
     }
 
     @FXML
@@ -105,6 +129,15 @@ public class SimulationScreenController {
                         FighterCellController cellController = loader.getController();
                         cellController.setFighter(fighter);
 
+                        Fighter selectedRight = listOfFightersRight.getSelectionModel().getSelectedItem();
+                        if (selectedRight != null && fighter.equals(selectedRight)) {
+                            root.setDisable(true);
+                            root.setStyle("-fx-opacity: 0.4;");
+                        } else {
+                            root.setDisable(false);
+                            root.setStyle("");
+                        }
+
                         setGraphic(root);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -126,6 +159,15 @@ public class SimulationScreenController {
 
                         FighterCellController cellController = loader.getController();
                         cellController.setFighter(fighter);
+
+                        Fighter selectedLeft = listOfFightersLeft.getSelectionModel().getSelectedItem();
+                        if (selectedLeft != null && fighter.equals(selectedLeft)) {
+                            root.setDisable(true);
+                            root.setStyle("-fx-opacity: 0.4;");
+                        } else {
+                            root.setDisable(false);
+                            root.setStyle("");
+                        }
 
                         setGraphic(root);
                     } catch (Exception e) {
@@ -151,6 +193,79 @@ public class SimulationScreenController {
 
         listOfFightersLeft.setItems(fightersData);
         listOfFightersRight.setItems(fightersData);
+    }
+
+    private void fighterSelectedAction() {
+        listOfFightersLeft.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Fighter selectedLeft = listOfFightersLeft.getSelectionModel().getSelectedItem();
+                Fighter selectedRight = listOfFightersRight.getSelectionModel().getSelectedItem();
+
+
+                if (selectedLeft != null && selectedLeft.equals(selectedRight)) {
+                    listOfFightersRight.getSelectionModel().clearSelection();
+                    labelNameRight.setText("");
+                    labelNicknameRight.setText("");
+                    imageFighterRight.setImage(null);
+                }
+
+
+                if (selectedLeft != null) {
+                    labelNameLeft.setText(selectedLeft.getName());
+                    labelNicknameLeft.setText("\"" + selectedLeft.getNickname() + "\"");
+                    try {
+                        String urlPhoto = selectedLeft.getImagePath();
+                        javafx.scene.image.Image photoImage = new javafx.scene.image.Image(urlPhoto, true);
+                        imageFighterLeft.setImage(photoImage);
+                    } catch (Exception e) {
+                        System.out.println("Nepodařilo se načíst obrazek z odkazu.");
+                    }
+                }
+            }
+
+            listOfFightersRight.refresh();
+        });
+
+        listOfFightersRight.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Fighter selectedRight = listOfFightersRight.getSelectionModel().getSelectedItem();
+                Fighter selectedLeft = listOfFightersLeft.getSelectionModel().getSelectedItem();
+
+                if (selectedRight != null && selectedRight.equals(selectedLeft)) {
+                    listOfFightersLeft.getSelectionModel().clearSelection();
+                    labelNameLeft.setText("");
+                    labelNicknameLeft.setText("");
+                    imageFighterLeft.setImage(null);
+                }
+
+                if (selectedRight != null) {
+                    labelNameRight.setText(selectedRight.getName());
+                    labelNicknameRight.setText("\"" + selectedRight.getNickname() + "\"");
+                    try {
+                        String urlPhoto = selectedRight.getImagePath();
+                        javafx.scene.image.Image photoImage = new javafx.scene.image.Image(urlPhoto, true);
+                        imageFighterRight.setImage(photoImage);
+                    } catch (Exception e) {
+                        System.out.println("Nepodařilo se načíst obrazek z odkazu.");
+                    }
+                }
+            }
+
+            listOfFightersLeft.refresh();
+        });
+    }
+
+    private void clearMiddleRing() {
+        listOfFightersLeft.getSelectionModel().clearSelection();
+        listOfFightersRight.getSelectionModel().clearSelection();
+
+        imageFighterLeft.setImage(null);
+        imageFighterRight.setImage(null);
+
+        labelNameLeft.setText("");
+        labelNicknameLeft.setText("");
+        labelNameRight.setText("");
+        labelNicknameRight.setText("");
     }
 
 }
