@@ -62,9 +62,6 @@ public class SimulationScreenController {
     @FXML
     private ImageView imageFighterRight;
 
-    private Fighter fighterLeft;
-    private Fighter fighterRight;
-
     /**
      * Navigates to the previous weight class.
      * Updates the UI, loads the corresponding fighters, and clears the current selection in the middle ring.
@@ -249,8 +246,6 @@ public class SimulationScreenController {
             if (event.getClickCount() == 2) {
                 Fighter selectedLeft = listOfFightersLeft.getSelectionModel().getSelectedItem();
                 Fighter selectedRight = listOfFightersRight.getSelectionModel().getSelectedItem();
-                fighterLeft = selectedLeft;
-                fighterRight = selectedRight;
 
                 if (selectedLeft != null && selectedLeft.equals(selectedRight)) {
                     listOfFightersRight.getSelectionModel().clearSelection();
@@ -333,8 +328,17 @@ public class SimulationScreenController {
 
     @FXML
     public void onFightButtonClick(ActionEvent event){
+
+        Fighter fighterLeft = listOfFightersLeft.getSelectionModel().getSelectedItem();
+        Fighter fighterRight = listOfFightersRight.getSelectionModel().getSelectedItem();
+
+        if (fighterLeft == null || fighterRight == null) {
+            System.out.println("Do ringu musí nastoupit oba bojovníci!");
+            return;
+        }
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/WinnerAnnouncement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/WinnerAnnoucment.fxml"));
             Parent root = loader.load();
 
             FightSimulation fightSimulation = new FightSimulation();

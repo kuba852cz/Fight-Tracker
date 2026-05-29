@@ -31,7 +31,7 @@ public class AppData {
             java.io.InputStream inputStream = getClass().getResourceAsStream("/Fighters.json");
 
             if (inputStream == null) {
-                System.out.println("CHYBA: Soubor Fighters.json nebyl nalezen!");
+                System.out.println("ERROR: File were not found!");
                 return;
             }
 
@@ -40,10 +40,10 @@ public class AppData {
             Type type = new TypeToken<Map<String, List<Fighter>>>(){}.getType();
             allDivisions = gson.fromJson(reader, type);
 
-            System.out.println("Databáze bojovníků úspěšně načtena! 🏆");
+            System.out.println("Fighters loaded! 🏆");
             reader.close();
         } catch (Exception e) {
-            System.out.println("Chyba při načítání JSONu: " + e.getMessage());
+            System.out.println("Error with loading JSON: " + e.getMessage());
             e.printStackTrace();
         }
     }

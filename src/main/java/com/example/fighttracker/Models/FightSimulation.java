@@ -22,6 +22,7 @@ public class FightSimulation {
         Fighter winner = getWinner(fighterA, fighterB);
         Fighter losser = null;
         String finishType;
+        String formattedTime;
         int endRound;
 
         if (winner == null) {
@@ -37,7 +38,18 @@ public class FightSimulation {
         } else {
             endRound = new Random().nextInt(1, maxRound + 1);
         }
-        return new FightResult(winner, losser, finishType, endRound);
+
+        if (finishType.toLowerCase().contains("decision") || finishType.equals("Draw")) {
+            endRound = maxRound;
+            formattedTime = "5:00";
+        } else {
+            endRound = new Random().nextInt(1, maxRound + 1);
+            int minutes = new Random().nextInt(0, 5);
+            int seconds = new Random().nextInt(0, 60);
+            formattedTime = String.format("%d:%02d", minutes, seconds);
+        }
+
+        return new FightResult(winner, losser, finishType, endRound, formattedTime);
     }
 
     /**

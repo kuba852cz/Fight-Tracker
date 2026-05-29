@@ -6,12 +6,14 @@ public class FightResult {
     private final Fighter losser;
     private final String finishType;
     private final int endRound;
+    private final String time;
 
-    public FightResult(Fighter winner, Fighter losser, String finishType, int endRound) {
+    public FightResult(Fighter winner, Fighter losser, String finishType, int endRound, String time) {
         this.winner = winner;
         this.losser = losser;
         this.finishType = finishType;
         this.endRound = endRound;
+        this.time = time;
     }
 
     public Fighter getWinner() {
@@ -28,5 +30,9 @@ public class FightResult {
 
     public int getEndRound() {
         return endRound;
+    }
+
+    public String getTime() {
+        return time;
     }
 }
