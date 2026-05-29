@@ -27,4 +27,4 @@ Fully interactive GUI. Simply use your mouse to navigate through the menus and b
 **Option B (Terminal / Failsafe):**
 If the double-click doesn't work or opens the file as an archive, open a terminal in the downloaded folder and run:
 ```bash
-java -jar FightTracker.jar
+java -jar Fight-Tracker-1.0-SNAPSHOT.jar
