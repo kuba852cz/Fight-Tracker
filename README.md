@@ -1,30 +1,30 @@
-# 🏆 Fight Tracker 
+# 🏆 Fight Tracker
 
 *Note: The environment and commands are entirely in Czech.*
 
 ## ✍️ Author
-I'm Jakub Kubíček and I created this game to not only pass the school, but to entertain some people who would give it a chance. 
+I'm Jakub Kubíček, and I created this application not only as a school project but to entertain anyone who gives it a chance.
 https://github.com/kuba852cz
 
 ## 📖 About
-Application, where you can checkouts fighter stats or even a bio. You can also Check the leaderboard and see the champion of the division. Even you can set up a tournament and simulate each fight and get a brand new champion.
+An application where you can check fighter stats and read their bios. You can also view the leaderboard, see the division champions, set up tournaments, and simulate fights to crown a brand new champion.
 
-## 🎮 Controls (Commands)
-You controll this App by basic buttons and your mouse.
+## 🎮 Controls
+Fully interactive GUI. Simply use your mouse to navigate through the menus and buttons.
 
 ## ⚙️ App Mechanics
-Fighters bio
-Leaderboard
-Simulation of a fights 
+* **Fighter Bios:** Detailed statistics and information.
+* **Leaderboard:** Ranking system for all fighters.
+* **Fight Simulation:** Automated algorithm to resolve matches.
 
 ## ⬇️ Installation
 1. Make sure you have **Java** installed on your computer (Java 17 or newer is recommended).
-2. Download the standalone Download the standalone _________ file from the repository. file from the repository. (Everything is packed inside, no extra data folders are needed!)
+2. Download the standalone **[FightTracker.jar](https://github.com/kuba852cz/Fight-Tracker/releases/latest)** file from the repository's Releases page. (Everything is packed inside, no extra data folders are needed!)
 
 ## 🚀 How to Run
-1. Open a terminal (command prompt) in the folder where you downloaded the JAR file.
-2. Run the game using the command:
-   ```bash
-   java -jar FightTracker.jar
+**Option A (Easy way):** Simply double-click the `FightTracker.jar` file.
 
-
+**Option B (Terminal / Failsafe):**
+If the double-click doesn't work or opens the file as an archive, open a terminal in the downloaded folder and run:
+```bash
+java -jar FightTracker.jar
