@@ -162,7 +162,7 @@ public class SimulationScreenController {
                         cellController.setFighter(fighter);
 
                         Fighter selectedRight = listOfFightersRight.getSelectionModel().getSelectedItem();
-                        if (selectedRight != null && fighter.equals(selectedRight)) {
+                        if (fighter.equals(selectedRight)) {
                             root.setDisable(true);
                             root.setStyle("-fx-opacity: 0.4;");
                         } else {
@@ -193,7 +193,7 @@ public class SimulationScreenController {
                         cellController.setFighter(fighter);
 
                         Fighter selectedLeft = listOfFightersLeft.getSelectionModel().getSelectedItem();
-                        if (selectedLeft != null && fighter.equals(selectedLeft)) {
+                        if (fighter.equals(selectedLeft)) {
                             root.setDisable(true);
                             root.setStyle("-fx-opacity: 0.4;");
                         } else {

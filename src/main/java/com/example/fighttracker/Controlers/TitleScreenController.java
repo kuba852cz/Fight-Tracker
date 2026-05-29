@@ -38,9 +38,7 @@ public class TitleScreenController {
     public void initialize(){
 
         if (Config.isDarkMode){
-            Platform.runLater(()->{
-                mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;");
-            });
+            Platform.runLater(()-> mainVBox.getScene().getRoot().setStyle("-fx-base: #1a1a1a; -fx-background-color: #1a1a1a;"));
         }
 
         String imagePath = Objects.requireNonNull(getClass().getResource("/FightTracker_Logo.png")).toExternalForm();

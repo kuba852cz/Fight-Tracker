@@ -2,7 +2,6 @@ package com.example.fighttracker.Controlers;
 
 import com.example.fighttracker.Models.Config;
 import com.example.fighttracker.Models.Fighter;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
