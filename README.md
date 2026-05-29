@@ -19,12 +19,13 @@ Fully interactive GUI. Simply use your mouse to navigate through the menus and b
 
 ## ⬇️ Installation
 1. Make sure you have **Java** installed on your computer (Java 17 or newer is recommended).
-2. Download the standalone **[FightTracker.jar](https://github.com/kuba852cz/Fight-Tracker/releases/latest)** file from the repository's Releases page. (Everything is packed inside, no extra data folders are needed!)
+2. Download the **[Fight_Tracker_jar.zip](https://github.com/kuba852cz/Fight-Tracker/releases/latest)** file from the repository's Releases page.
+3. **Extract (unzip)** the downloaded file to a folder on your computer.
 
 ## 🚀 How to Run
-**Option A (Easy way):** Simply double-click the `FightTracker.jar` file.
+**Option A (Easy way - Recommended):** Open the extracted folder and simply double-click the `Start.bat` file (or the `.jar` file directly).
 
 **Option B (Terminal / Failsafe):**
-If the double-click doesn't work or opens the file as an archive, open a terminal in the downloaded folder and run:
+If the double-click doesn't work, open a terminal in the extracted folder and run:
 ```bash
-java -jar Fight-Tracker-1.0-SNAPSHOT.jar
+java -jar Fight-Tracker.jar
