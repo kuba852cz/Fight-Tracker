@@ -14,9 +14,10 @@ public class FightSimulation {
      * Calculates the maximum rounds, the winner, the finish type, and the exact round the fight ends.
      * @param fighterA The first fighter in the simulation.
      * @param fighterB The second fighter in the simulation.
+     * @return A FightResult object containing the winner, loser, finish type, and the round the fight ended.
      */
 
-    public void runSimulator(Fighter fighterA, Fighter fighterB) {
+    public FightResult runSimulator(Fighter fighterA, Fighter fighterB) {
         int maxRound = getMaxRound(fighterA, fighterB);
         Fighter winner = getWinner(fighterA, fighterB);
         Fighter losser = null;
@@ -36,6 +37,7 @@ public class FightSimulation {
         } else {
             endRound = new Random().nextInt(1, maxRound + 1);
         }
+        return new FightResult(winner, losser, finishType, endRound);
     }
 
     /**

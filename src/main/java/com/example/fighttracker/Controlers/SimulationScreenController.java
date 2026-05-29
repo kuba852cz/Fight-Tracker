@@ -2,6 +2,8 @@ package com.example.fighttracker.Controlers;
 
 import com.example.fighttracker.Logic.AppData;
 import com.example.fighttracker.Models.Config;
+import com.example.fighttracker.Models.FightResult;
+import com.example.fighttracker.Models.FightSimulation;
 import com.example.fighttracker.Models.Fighter;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -17,6 +19,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -58,6 +61,9 @@ public class SimulationScreenController {
 
     @FXML
     private ImageView imageFighterRight;
+
+    private Fighter fighterLeft;
+    private Fighter fighterRight;
 
     /**
      * Navigates to the previous weight class.
@@ -243,7 +249,8 @@ public class SimulationScreenController {
             if (event.getClickCount() == 2) {
                 Fighter selectedLeft = listOfFightersLeft.getSelectionModel().getSelectedItem();
                 Fighter selectedRight = listOfFightersRight.getSelectionModel().getSelectedItem();
-
+                fighterLeft = selectedLeft;
+                fighterRight = selectedRight;
 
                 if (selectedLeft != null && selectedLeft.equals(selectedRight)) {
                     listOfFightersRight.getSelectionModel().clearSelection();
@@ -314,6 +321,43 @@ public class SimulationScreenController {
         labelNicknameLeft.setText("");
         labelNameRight.setText("");
         labelNicknameRight.setText("");
+    }
+
+    /**
+     * Executes the fight simulation between the two selected fighters and displays the result.
+     * Loads a modal popup window (Winner Announcement), passes the fighters and the simulation
+     * result data to its controller, and blocks interaction with the main window until closed.
+     *
+     * @param event The action event triggered by clicking the fight button, used to set the modal owner.
+     */
+
+    @FXML
+    public void onFightButtonClick(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/WinnerAnnouncement.fxml"));
+            Parent root = loader.load();
+
+            FightSimulation fightSimulation = new FightSimulation();
+            FightResult result = fightSimulation.runSimulator(fighterLeft, fighterRight);
+
+            WinnerAnnoucmentController winnerAnnoucmentController = loader.getController();
+            winnerAnnoucmentController.setWinnerAnnoucmentData(fighterLeft, fighterRight, result);
+
+            Stage modalStage = new Stage();
+            modalStage.setTitle("Fight result!");
+            modalStage.setScene(new Scene(root));
+
+            modalStage.initModality(Modality.APPLICATION_MODAL);
+
+            Stage parentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            modalStage.initOwner(parentStage);
+
+            modalStage.showAndWait();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 }
