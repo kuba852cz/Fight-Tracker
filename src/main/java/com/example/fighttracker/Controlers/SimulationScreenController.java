@@ -22,6 +22,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller for the Fight Simulation screen.
+ * Manages weight class navigation, fighter selection logic, and prepares data for the fight simulation.
+ */
+
 public class SimulationScreenController {
 
     @FXML
@@ -54,6 +59,10 @@ public class SimulationScreenController {
     @FXML
     private ImageView imageFighterRight;
 
+    /**
+     * Navigates to the previous weight class.
+     * Updates the UI, loads the corresponding fighters, and clears the current selection in the middle ring.
+     */
 
     @FXML
     public void onLeftButtonClick() {
@@ -65,6 +74,11 @@ public class SimulationScreenController {
             clearMiddleRing();
         }
     }
+
+    /**
+     * Navigates to the next weight class.
+     * Updates the UI, loads the corresponding fighters, and clears the current selection in the middle ring.
+     */
 
     @FXML
     public void onRightButtonClick() {
@@ -79,6 +93,11 @@ public class SimulationScreenController {
 
     private final String[] weightClasses = {"Flyweight", "Bantamweight", "Featherweight", "Lightweight", "Welterweight", "Middleweight", "Light heavyweight", "Heavyweight"};
     private int currentWeightIndex = 3;
+
+    /**
+     * Initializes the simulation screen setup.
+     * Applies themes, configures list views, and loads the initial default weight class data.
+     */
 
     @FXML
     public void initialize() {
@@ -96,6 +115,10 @@ public class SimulationScreenController {
         fighterSelectedAction();
     }
 
+    /**
+     * Returns the user to the main title screen.
+     */
+
     @FXML
     public void onBackButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/TitleScreen.fxml"));
@@ -110,9 +133,18 @@ public class SimulationScreenController {
         stage.show();
     }
 
+    /**
+     * Updates the label displaying the currently active weight class.
+     */
+
     private void updateWeightClassLabel() {
         labelWeightClass.setText(weightClasses[currentWeightIndex]);
     }
+
+    /**
+     * Configures the custom cell factories for the left and right ListView components.
+     * Implements the logic to visually lock and disable a fighter if they are already selected in the opposing list.
+     */
 
     private void setupListView() {
         listOfFightersLeft.setCellFactory(listView -> new ListCell<>() {
@@ -179,6 +211,11 @@ public class SimulationScreenController {
 
     }
 
+    /**
+     * Fetches fighter data for the currently selected weight class from the application data
+     * and populates both the left and right list views.
+     */
+
     private void loadDataForCurrentWeight() {
         String currentCategory = weightClasses[currentWeightIndex];
         ObservableList<Fighter> fightersData = FXCollections.observableArrayList();
@@ -194,6 +231,12 @@ public class SimulationScreenController {
         listOfFightersLeft.setItems(fightersData);
         listOfFightersRight.setItems(fightersData);
     }
+
+    /**
+     * Sets up double-click event handlers for fighter selection.
+     * Updates the central display with the selected fighter's details (name, nickname, photo)
+     * and ensures mutually exclusive selection by clearing duplicates from the opposing list.
+     */
 
     private void fighterSelectedAction() {
         listOfFightersLeft.setOnMouseClicked(event -> {
@@ -254,6 +297,11 @@ public class SimulationScreenController {
             listOfFightersLeft.refresh();
         });
     }
+
+    /**
+     * Clears all fighter selections, names, and images from the central match-up display.
+     * Used primarily when switching between weight classes to ensure a clean slate.
+     */
 
     private void clearMiddleRing() {
         listOfFightersLeft.getSelectionModel().clearSelection();

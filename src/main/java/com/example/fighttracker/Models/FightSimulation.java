@@ -2,7 +2,19 @@ package com.example.fighttracker.Models;
 
 import java.util.Random;
 
+/**
+ * Handles the mathematical logic for simulating a fight between two fighters.
+ * Calculates the winner, the method of victory, and the duration of the fight.
+ */
+
 public class FightSimulation {
+
+    /**
+     * Executes the fight simulation to determine the outcome.
+     * Calculates the maximum rounds, the winner, the finish type, and the exact round the fight ends.
+     * @param fighterA The first fighter in the simulation.
+     * @param fighterB The second fighter in the simulation.
+     */
 
     public void runSimulator(Fighter fighterA, Fighter fighterB) {
         int maxRound = getMaxRound(fighterA, fighterB);
@@ -25,6 +37,13 @@ public class FightSimulation {
             endRound = new Random().nextInt(1, maxRound + 1);
         }
     }
+
+    /**
+     * Determines the finishing method (Knockout, Submission, or Decision)
+     * based on the winner's historical win ratios and probabilities.
+     * @param winner The fighter who won the simulated match.
+     * @return A string representing the exact type of finish.
+     */
 
     public String getTypeOfFinish(Fighter winner) {
         double koRatio = (double) winner.getKo() / winner.getWins();
@@ -51,6 +70,14 @@ public class FightSimulation {
         }
     }
 
+    /**
+     * Determines the maximum number of rounds for the fight.
+     * Championship fights (where at least one fighter is rank "C") are 5 rounds, regular fights are 3 rounds.
+     * @param fighterA The first fighter.
+     * @param fighterB The second fighter.
+     * @return The maximum number of rounds (3 or 5).
+     */
+
     public int getMaxRound (Fighter fighterA, Fighter fighterB){
         if (fighterA.getRank().equals("C") || fighterB.getRank().equals("C")){
             return 5;
@@ -58,6 +85,15 @@ public class FightSimulation {
             return 3;
         }
     }
+
+    /**
+     * Calculates the winner of the fight based on a weighted random probability
+     * using the historical win ratios of both fighters.
+     * Includes a small statistical margin for a draw.
+     * @param fighterA The first fighter.
+     * @param fighterB The second fighter.
+     * @return The winning Fighter object, or null in the case of a draw.
+     */
 
     public Fighter getWinner(Fighter fighterA, Fighter fighterB){
         int totalFightsA = (fighterA.getWins() + fighterA.getLosses() + fighterA.getDraws());

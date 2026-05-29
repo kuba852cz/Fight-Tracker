@@ -13,6 +13,11 @@ import javafx.stage.Stage;
 import org.controlsfx.control.ToggleSwitch;
 import java.io.IOException;
 
+/**
+ * Controller for the Settings screen.
+ * Manages user preferences such as unit formats (weight/height) and application appearance (dark mode).
+ */
+
 public class SettingsScreenController {
 
     @FXML
@@ -26,6 +31,12 @@ public class SettingsScreenController {
 
     @FXML
     private VBox mainVBox;
+
+    /**
+     * Initializes the settings UI components.
+     * Populates the choice boxes, sets their values based on the current global configuration,
+     * and attaches a listener to the dark mode toggle for real-time theme switching.
+     */
 
     @FXML
     public void initialize(){
@@ -51,6 +62,11 @@ public class SettingsScreenController {
 
      });
     }
+
+    /**
+     * Saves the currently selected settings to the global configuration
+     * and navigates the user back to the main title screen.
+     */
 
     @FXML
     public void onBackButtonClick(ActionEvent event) throws IOException {

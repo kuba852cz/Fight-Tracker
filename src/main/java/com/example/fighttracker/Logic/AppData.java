@@ -10,9 +10,19 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Manages the application's data layer.
+ * Responsible for loading and storing fighter data from a local JSON resource file.
+ */
+
 public class AppData {
 
     private Map<String, List<Fighter>> allDivisions;
+
+    /**
+     * Loads fighter data from the embedded "Fighters.json" file.
+     * Parses the JSON content into a map categorized by weight divisions.
+     */
 
     public void loadFighters() {
         try {
@@ -37,6 +47,13 @@ public class AppData {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Retrieves a list of fighters for a specific weight division.
+     *
+     * @param weightClass The name of the weight division (e.g., "Lightweight").
+     * @return A list of fighters in the specified division, or null if not found.
+     */
 
     public List<Fighter> getDivision(String weightClass) {
         return allDivisions.get(weightClass);

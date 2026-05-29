@@ -1,5 +1,10 @@
 package com.example.fighttracker.Models;
 
+/**
+ * Represents a mixed martial arts (MMA) fighter.
+ * Holds personal information, physical attributes, and fight statistics.
+ */
+
 public class Fighter {
 
     private final String name;
@@ -71,6 +76,12 @@ public class Fighter {
     public String getWeightClass() {
         return weightClass;
     }
+
+    /**
+     * Gets the fighter's current division rank.
+     * Returns "C" (Champion) if the rank is 0, otherwise returns the numeric rank.
+     * @return String representation of the rank.
+     */
 
     public String getRank() {
         if (this.rank == 0){
@@ -151,9 +162,5 @@ public class Fighter {
                 ", fightingStyle='" + fightingStyle + '\'' +
                 ", imagePath='" + imagePath + '\'' +
                 '}';
-    }
-
-    public String rankingToString(){
-        return rank + " " + flag + " " + name + "                  " + getRecord();
     }
 }

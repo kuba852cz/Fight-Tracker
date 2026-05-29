@@ -20,6 +20,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller for the Ranking screen.
+ * Displays a ranked list of fighters by weight division and handles navigation to detailed fighter biographies.
+ */
+
 public class RankingScreenController {
 
     private final String[] weightClasses = {"Flyweight", "Bantamweight", "Featherweight", "Lightweight", "Welterweight", "Middleweight", "Light heavyweight", "Heavyweight"};
@@ -33,6 +38,12 @@ public class RankingScreenController {
 
     @FXML
     private Label labelWeightClass;
+
+    /**
+     * Initializes the ranking screen.
+     * Applies the current theme, loads the default weight class data, and sets up a double-click listener
+     * on the list view to navigate to a specific fighter's biography screen.
+     */
 
     @FXML
     public void initialize(){
@@ -73,6 +84,10 @@ public class RankingScreenController {
         });
     }
 
+    /**
+     * Navigates to the previous weight class, updating the UI and reloading the fighter list.
+     */
+
     @FXML
     public void onLeftButtonClick() {
         if (currentWeightIndex > 0) {
@@ -81,6 +96,10 @@ public class RankingScreenController {
             loadDataForCurrentWeight();
         }
     }
+
+    /**
+     * Navigates to the next weight class, updating the UI and reloading the fighter list.
+     */
 
     @FXML
     public void onRightButtonClick() {
@@ -94,6 +113,10 @@ public class RankingScreenController {
     private void updateWeightClassLabel() {
         labelWeightClass.setText(weightClasses[currentWeightIndex]);
     }
+
+    /**
+     * Configures the custom cell factory for the ListView to render each fighter using the FighterCell layout.
+     */
 
     private void setupListView() {
         listOfFighters.setCellFactory(listView -> new ListCell<>() {
@@ -119,6 +142,11 @@ public class RankingScreenController {
         });
     }
 
+    /**
+     * Loads fighter data from the data source for the currently selected weight class
+     * and updates the ListView items.
+     */
+
     private void loadDataForCurrentWeight() {
         String currentCategory = weightClasses[currentWeightIndex];
         ObservableList<Fighter> fightersData = FXCollections.observableArrayList();
@@ -133,6 +161,10 @@ public class RankingScreenController {
 
         listOfFighters.setItems(fightersData);
     }
+
+    /**
+     * Returns the user to the main title screen.
+     */
 
     @FXML
     public void onBackButtonClick(ActionEvent event) throws IOException {

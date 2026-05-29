@@ -16,6 +16,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Controller for the main title screen (main menu).
+ * Handles the initial UI setup, dynamic logo display, and navigation to other screens.
+ */
+
 public class TitleScreenController {
 
     @FXML
@@ -23,6 +28,11 @@ public class TitleScreenController {
 
     @FXML
     private ImageView logoImageView;
+
+    /**
+     * Initializes the title screen.
+     * Applies the dark mode theme if configured and dynamically binds the application logo.
+     */
 
     @FXML
     public void initialize(){
@@ -38,6 +48,10 @@ public class TitleScreenController {
         logoImageView.fitWidthProperty().bind(mainVBox.widthProperty());
     }
 
+    /**
+     * Navigates the user to the Ranking screen.
+     */
+
     @FXML
     protected void onRankingButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/RankingScreen.fxml"));
@@ -51,6 +65,10 @@ public class TitleScreenController {
         stage.setTitle("Fight Tracker - Ranking");
         stage.show();
     }
+
+    /**
+     * Navigates the user to the Fight Simulation screen.
+     */
 
     @FXML
     protected void onSimulationButtonClick(ActionEvent event) throws IOException {
@@ -66,6 +84,10 @@ public class TitleScreenController {
         stage.show();
     }
 
+    /**
+     * Navigates the user to the Settings screen.
+     */
+
     @FXML
     protected void onSettingsButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fighttracker/SettingsScreen.fxml"));
@@ -78,6 +100,10 @@ public class TitleScreenController {
         stage.setTitle("Fight Tracker - Settings");
         stage.show();
     }
+
+    /**
+     * Safely closes and exits the application.
+     */
 
     @FXML
     protected void onExitButtonClick() {

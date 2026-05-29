@@ -18,6 +18,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controller for the Fighter Biography screen.
+ * Displays detailed information about a selected fighter, including statistics,
+ * physical attributes, and a visual representation of their fight record.
+ */
+
 public class BioScreenCotroller {
 
     @FXML
@@ -46,8 +52,11 @@ public class BioScreenCotroller {
     @FXML private ProgressBar progressBarLosses;
     @FXML private ProgressBar progressBarDraws;
 
-
-
+    /**
+     * Initializes the biography screen UI.
+     * Applies the dark mode theme if configured, binds the photo image size dynamically,
+     * and sets custom colors for the win/loss/draw progress bars.
+     */
 
     @FXML
     public void initialize(){
@@ -67,6 +76,14 @@ public class BioScreenCotroller {
         progressBarDraws.setStyle("-fx-accent: #e8a500");
 
     }
+
+    /**
+     * Populates the screen with the detailed data of a specific fighter.
+     * Handles unit conversions (metric to imperial) based on global settings
+     * and calculates the percentages for the fight record progress bars.
+     *
+     * @param fighter The Fighter object whose biography is being displayed.
+     */
 
     public void setFighterData(Fighter fighter){
         labelName.setText(fighter.getName());
@@ -118,6 +135,10 @@ public class BioScreenCotroller {
         progressBarDraws.setProgress((double) fighter.getDraws() /(fighter.getWins()+fighter.getDraws()+fighter.getLosses()));
 
     }
+
+    /**
+     * Navigates the user back to the Ranking screen.
+     */
 
     @FXML
     public void onBackButtonClick(ActionEvent event) throws IOException {

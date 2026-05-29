@@ -8,6 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+/**
+ * Controller for the custom list cell representing a single fighter.
+ * Manages the visual layout and data binding for individual items in the ListView.
+ */
+
 public class FighterCellController {
 
     @FXML
@@ -25,6 +30,11 @@ public class FighterCellController {
     @FXML
     private Label labelRecord;
 
+    /**
+     * Initializes the cell controller.
+     * Applies dark mode styling to the cell components if configured globally.
+     */
+
     @FXML
     public void initialize() {
         if (Config.isDarkMode) {
@@ -35,6 +45,13 @@ public class FighterCellController {
             labelRank.setStyle("-fx-text-fill: white;");
         }
     }
+
+    /**
+     * Populates the cell's UI elements with data from the provided Fighter object.
+     * Sets the text fields and dynamically loads the fighter's country flag image.
+     *
+     * @param fighter The Fighter object containing the data to display.
+     */
 
     public void setFighter(Fighter fighter) {
         labelRank.setText(String.valueOf(fighter.getRank()));
