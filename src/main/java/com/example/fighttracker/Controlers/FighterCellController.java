@@ -62,7 +62,7 @@ public class FighterCellController {
             javafx.scene.image.Image flagImage = new javafx.scene.image.Image(url, true);
             imageFlag.setImage(flagImage);
         } catch (Exception e) {
-            System.out.println("Nepodařilo se načíst vlajku z odkazu.");
+            System.out.println("Couldnt load the photo.");
         }
     }
 }

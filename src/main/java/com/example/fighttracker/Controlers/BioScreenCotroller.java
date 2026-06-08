@@ -125,7 +125,7 @@ public class BioScreenCotroller {
             javafx.scene.image.Image photoImage = new javafx.scene.image.Image(urlPhoto, true);
             imagePhoto.setImage(photoImage);
         } catch (Exception e) {
-            System.out.println("Nepodařilo se načíst vlajku z odkazu.");
+            System.out.println("Couldnt load the photo");
         }
 
         progressBarWins.setProgress((double) fighter.getWins() /(fighter.getWins()+fighter.getDraws()+fighter.getLosses()));

@@ -263,7 +263,7 @@ public class SimulationScreenController {
                         javafx.scene.image.Image photoImage = new javafx.scene.image.Image(urlPhoto, true);
                         imageFighterLeft.setImage(photoImage);
                     } catch (Exception e) {
-                        System.out.println("Nepodařilo se načíst obrazek z odkazu.");
+                        System.out.println("Couldnt load the photo.");
                     }
                 }
             }
@@ -291,7 +291,7 @@ public class SimulationScreenController {
                         javafx.scene.image.Image photoImage = new javafx.scene.image.Image(urlPhoto, true);
                         imageFighterRight.setImage(photoImage);
                     } catch (Exception e) {
-                        System.out.println("Nepodařilo se načíst obrazek z odkazu.");
+                        System.out.println("Couldnt load the photo.");
                     }
                 }
             }
@@ -333,7 +333,7 @@ public class SimulationScreenController {
         Fighter fighterRight = listOfFightersRight.getSelectionModel().getSelectedItem();
 
         if (fighterLeft == null || fighterRight == null) {
-            System.out.println("Do ringu musí nastoupit oba bojovníci!");
+            System.out.println("You have to select both fighters!");
             return;
         }
 

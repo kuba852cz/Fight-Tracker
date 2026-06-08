@@ -1,5 +1,9 @@
 package com.example.fighttracker.Models;
 
+/**
+ * Creates fight result as an java object
+ */
+
 public class FightResult {
 
     private final Fighter winner;
